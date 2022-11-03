@@ -9,7 +9,6 @@ public class ButtonHandler : MonoBehaviour
     void Start()
     {
         currentDisplay = GameObject.Find("displayImage").GetComponent<DisplayImage>();
-        
     }
 
     public void OnRightClickArrow()
