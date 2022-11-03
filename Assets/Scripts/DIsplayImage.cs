@@ -1,11 +1,20 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DisplayImage : MonoBehaviour
 {
+
+
     public int ValueCurentWallHorizontal = 5;
     public int ValueCurentWallVertical = 3;
+
+    public enum State
+    {
+        normal, zoom, ChangedView, idle
+    };
+
+    public State CurrentState { get; set; }
     public int CurentWallHorizontal
     {
         get { return currentWallHorizontal; }
@@ -25,7 +34,7 @@ public class DisplayImage : MonoBehaviour
         set
         {
             currentWallVertical = value;
-            
+
         }
     }
 
@@ -47,12 +56,12 @@ public class DisplayImage : MonoBehaviour
     {
         if (currentWallHorizontal != previousWallHorizontal)
         {
-           /* if (currentWallVertical != previousWallHorizontal)
-            {*/
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWallVertical.ToString() + currentWallHorizontal.ToString());
-                Debug.Log("Sprites/wall" + currentWallHorizontal.ToString() + currentWallVertical.ToString());
-           // }
-            
+            /* if (currentWallVertical != previousWallHorizontal)
+             {*/
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWallVertical.ToString() + currentWallHorizontal.ToString());
+            Debug.Log("Sprites/wall" + currentWallHorizontal.ToString() + currentWallVertical.ToString());
+            // }
+
         }
         if (currentWallVertical != previousWallVertical)
         {
@@ -61,6 +70,6 @@ public class DisplayImage : MonoBehaviour
         }
         previousWallHorizontal = currentWallHorizontal;
         previousWallVertical = currentWallVertical;
-        
+
     }
 }
