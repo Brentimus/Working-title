@@ -25,6 +25,7 @@ public class ButtonHandler : MonoBehaviour
     public void OnTopClickArrow()
     {
         currentDisplay.CurentWallVertical = currentDisplay.CurentWallVertical + 1;
+        Debug.Log(currentDisplay.CurentWallVertical);
     }
 
     public void OnBotClickArrow()

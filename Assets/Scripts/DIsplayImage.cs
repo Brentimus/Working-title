@@ -21,20 +21,17 @@ public class DisplayImage : MonoBehaviour
     }
     public int CurentWallVertical
     {
-        get { return currentWallVertical;}
+        get { return currentWallVertical; }
         set
         {
-            if (value == ValueCurentWallVertical)
-                CurentWallVertical = 1;
-            else if (value == 0)
-                currentWallVertical = 2;
-            else
-                currentWallVertical = value;
+            currentWallVertical = value;
+            
         }
     }
 
     private int currentWallHorizontal;
     private int currentWallVertical;
+
     private int previousWallHorizontal;
     private int previousWallVertical;
 
@@ -50,19 +47,20 @@ public class DisplayImage : MonoBehaviour
     {
         if (currentWallHorizontal != previousWallHorizontal)
         {
-            if (currentWallVertical != previousWallHorizontal)
-            {
+           /* if (currentWallVertical != previousWallHorizontal)
+            {*/
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWallVertical.ToString() + currentWallHorizontal.ToString());
                 Debug.Log("Sprites/wall" + currentWallHorizontal.ToString() + currentWallVertical.ToString());
-            }
+           // }
             
         }
         if (currentWallVertical != previousWallVertical)
         {
-            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWallVertical.ToString()+ currentWallHorizontal.ToString() );
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWallVertical.ToString() + currentWallHorizontal.ToString());
             Debug.Log("Sprites/wall" + currentWallHorizontal.ToString() + currentWallVertical.ToString());
         }
         previousWallHorizontal = currentWallHorizontal;
         previousWallVertical = currentWallVertical;
+        
     }
 }
