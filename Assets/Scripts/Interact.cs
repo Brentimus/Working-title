@@ -6,7 +6,6 @@ public class Interact : MonoBehaviour {
 
     private DisplayImage currentDisplay;
 
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
