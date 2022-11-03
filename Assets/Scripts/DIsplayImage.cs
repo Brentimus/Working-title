@@ -4,25 +4,65 @@ using UnityEngine;
 
 public class DisplayImage : MonoBehaviour
 {
-    public int CurentWall
+    public int ValueCurentWallHorizontal = 5;
+    public int ValueCurentWallVertical = 3;
+    public int CurentWallHorizontal
     {
-        get { return currentWall; }
+        get { return currentWallHorizontal; }
         set
         {
-            if (value == 5)
-                CurentWall = 1;
+            if (value == ValueCurentWallHorizontal)
+                CurentWallHorizontal = 1;
             else if (value == 0)
-                currentWall = 4;
+                currentWallHorizontal = 4;
             else
-                currentWall = value;
+                currentWallHorizontal = value;
+        }
+    }
+    public int CurentWallVertical
+    {
+        get { return currentWallVertical;}
+        set
+        {
+            if (value == ValueCurentWallVertical)
+                CurentWallVertical = 1;
+            else if (value == 0)
+                currentWallVertical = 2;
+            else
+                currentWallVertical = value;
         }
     }
 
-    private int currentWall;
-    private int previousWall;
+    private int currentWallHorizontal;
+    private int currentWallVertical;
+    private int previousWallHorizontal;
+    private int previousWallVertical;
 
     void Start()
     {
-        
+        previousWallHorizontal = 0;
+        currentWallVertical = 1;
+        currentWallHorizontal = 1;
+
+    }
+
+    void Update()
+    {
+        if (currentWallHorizontal != previousWallHorizontal)
+        {
+            if (currentWallVertical != previousWallHorizontal)
+            {
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWallVertical.ToString() + currentWallHorizontal.ToString());
+                Debug.Log("Sprites/wall" + currentWallHorizontal.ToString() + currentWallVertical.ToString());
+            }
+            
+        }
+        if (currentWallVertical != previousWallVertical)
+        {
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/wall" + currentWallVertical.ToString()+ currentWallHorizontal.ToString() );
+            Debug.Log("Sprites/wall" + currentWallHorizontal.ToString() + currentWallVertical.ToString());
+        }
+        previousWallHorizontal = currentWallHorizontal;
+        previousWallVertical = currentWallVertical;
     }
 }
